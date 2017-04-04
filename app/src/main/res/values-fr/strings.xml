@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FormathMobile</string>
+    <string name="title_activity_login">Connecter</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mot de passe (optionel)</string>
+    <string name="action_sign_in">Connectez ou enregistrez vous</string>
+    <string name="action_sign_in_short">Connection</string>
+    <string name="error_invalid_email">Cet adresse email est invalide</string>
+    <string name="error_invalid_password">Ce mot de passe est trop court</string>
+    <string name="error_incorrect_password">Ce mot de passe incorrecte</string>
+    <string name="error_field_required">Ce champ est requis</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+</resources>

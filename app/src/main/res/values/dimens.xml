@@ -1,0 +1,16 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">32dp</dimen>
+    <dimen name="activity_vertical_margin">32dp</dimen>
+
+    <dimen name="main_menu_item_bottom_marging">16dp</dimen>
+    <dimen name="main_menu_image_height">180dp</dimen>
+    <dimen name="main_menu_image_width">180dp</dimen>
+    <dimen name="main_menu_image_bottom_marging">50dp</dimen>
+
+    <dimen name="text_size_button">20sp</dimen>
+
+    <!-- select category fragment -->
+    <dimen name="select_category_padding_bottom">32dp</dimen>
+    <dimen name="select_category_button_padding_left">5dp</dimen>
+</resources>
