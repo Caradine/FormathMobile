@@ -1,0 +1,188 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:weightSum="5"
+    android:orientation="vertical"
+    tools:context="be.formath.formathmobile.control.GameActivityFragments.PlayFieldFragment" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/play_field_default_title"
+        android:id="@+id/play_field_title"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_weight="1"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textIsSelectable="false" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/play_field_default_operation_label"
+        android:id="@+id/play_field_label_operation"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_weight="1" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/play_field_user_response"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_weight="1"
+        android:text="@string/play_field_default_user_response"
+        android:textSize="40sp" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_margin="0dp"
+        android:stretchColumns="*"
+        android:collapseColumns="*"
+        android:gravity="center"
+        android:weightSum="4" >
+        <TableRow
+            android:layout_weight="1" >
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4" >
+                <Button
+                    android:id="@+id/play_field_key_1"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_key_1"
+                    android:textSize="30sp" />
+                <Button
+                    android:id="@+id/play_field_key_2"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_key_2"
+                    android:textSize="30sp" />
+                <Button
+                    android:id="@+id/play_field_key_3"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_key_3"
+                    android:textSize="30sp" />
+                <Button
+                    android:id="@+id/play_field_key_backspace"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_back_space"
+                    android:textSize="25sp" />
+            </LinearLayout>
+        </TableRow>
+        <TableRow
+            android:layout_weight="1" >
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/play_field_key_4"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_key_4"
+                    android:textSize="30sp" />
+                <Button
+                    android:id="@+id/play_field_key_5"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_key_5"
+                    android:textSize="30sp" />
+                <Button
+                    android:id="@+id/play_field_key_6"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_key_6"
+                    android:textSize="30sp" />
+                <Button
+                    android:id="@+id/play_field_clear_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_clear"
+                    android:textSize="30sp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+        </TableRow>
+        <TableRow
+            android:layout_weight="1" >
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/play_field_key_7"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_key_7"
+                    android:textSize="30sp" />
+                <Button
+                    android:id="@+id/play_field_key_8"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="30sp"
+                    android:text="@string/play_field_key_8" />
+                <Button
+                    android:id="@+id/play_field_key_9"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_key_9"
+                    android:textSize="30sp" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </TableRow>
+        <TableRow
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/play_field_key_coma"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_coma"
+                    android:textSize="30sp" />
+                <Button
+                    android:id="@+id/play_field_key_0"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_key_0"
+                    android:textSize="30sp" />
+                <Button
+                    android:id="@+id/play_field_key_minus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/play_field_minus"
+                    android:textSize="30sp"/>
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/play_field_btn_validate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/play_field_validation"
+                    android:textSize="25sp" />
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

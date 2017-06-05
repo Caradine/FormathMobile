@@ -1,4 +1,4 @@
-package be.formath.formathmobile.Data;
+package be.formath.formathmobile.data;
 
 import java.util.Calendar;
 
@@ -6,8 +6,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import be.formath.formathmobile.Model.Game;
-import be.formath.formathmobile.Model.Operation;
+import be.formath.formathmobile.model.Game;
+import be.formath.formathmobile.model.Operation;
 
 public class DataWriter {
     private static DataWriter instance;

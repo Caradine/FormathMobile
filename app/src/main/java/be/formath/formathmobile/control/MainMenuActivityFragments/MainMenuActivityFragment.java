@@ -1,4 +1,4 @@
-package be.formath.formathmobile.Control;
+package be.formath.formathmobile.control.MainMenuActivityFragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -8,9 +8,6 @@ import android.view.ViewGroup;
 
 import be.formath.formathmobile.R;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class MainMenuActivityFragment extends Fragment {
 
     public MainMenuActivityFragment() {

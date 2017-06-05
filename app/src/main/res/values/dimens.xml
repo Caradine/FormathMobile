@@ -13,4 +13,5 @@
     <!-- select category fragment -->
     <dimen name="select_category_padding_bottom">32dp</dimen>
     <dimen name="select_category_button_padding_left">5dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

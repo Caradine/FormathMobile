@@ -1,4 +1,4 @@
-package be.formath.formathmobile.Model;
+package be.formath.formathmobile.model;
 
 import java.util.ArrayList;
 

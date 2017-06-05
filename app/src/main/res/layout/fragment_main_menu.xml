@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="be.formath.formathmobile.Control.MainMenuActivity"
+    tools:context="be.formath.formathmobile.control.MainMenuActivity"
     android:weightSum="6">
     <ImageView
         android:layout_width="@dimen/main_menu_image_width"

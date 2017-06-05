@@ -1,4 +1,4 @@
-package be.formath.formathmobile.Data;
+package be.formath.formathmobile.data;
 
 import java.util.GregorianCalendar;
 
@@ -6,7 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import be.formath.formathmobile.Model.Medal;
+import be.formath.formathmobile.model.Medal;
 
 public class DataRetriever {
     private static DataRetriever instance;
@@ -49,9 +49,12 @@ public class DataRetriever {
 
         if (c.getCount() == 1) {
             c.moveToFirst();
-            return c.getString(0);
+            String passwd = c.getString(0);
+            c.close();
+            return passwd;
         }
         else
+            c.close();
             return null;
     }
 
@@ -85,6 +88,8 @@ public class DataRetriever {
             med.setObtainingDateTime(date);
             return new Medal();
         }
+
+        c.close();
         return null;
     }
 }

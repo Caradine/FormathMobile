@@ -1,4 +1,4 @@
-package be.formath.formathmobile.Data;
+package be.formath.formathmobile.data;
 
 import android.provider.BaseColumns;
 

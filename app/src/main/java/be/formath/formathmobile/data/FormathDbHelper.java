@@ -1,13 +1,9 @@
-package be.formath.formathmobile.Data;
+package be.formath.formathmobile.data;
 
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-/**
- * Created by caradine on 4/04/17.
- */
 
 public class FormathDbHelper extends SQLiteOpenHelper {
     private static final String TEXT_TYPE = " TEXT";

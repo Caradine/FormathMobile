@@ -1,4 +1,4 @@
-package be.formath.formathmobile.Model;
+package be.formath.formathmobile.model;
 
 public enum MedalType {
     NONE, BRONZE, SILVER, GOLD;

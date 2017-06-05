@@ -1,19 +1,79 @@
 <resources>
     <string name="app_name">FormathMobile</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_main_menu">What ?</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="prompt_password">Mot de passe (optionel)</string>
+    <string name="action_sign_in">Connectez ou enregistrez vous</string>
+    <string name="action_sign_in_short">Connection</string>
+    <string name="error_invalid_email">Cet adresse email est invalide</string>
+    <string name="error_invalid_password">Ce mot de passe est trop court</string>
+    <string name="error_incorrect_password">Ce mot de passe incorrecte</string>
+    <string name="error_field_required">Ce champ est requis</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_main_menu">MainMenuActivity</string>
-    <string name="action_settings">Settings</string>
+    <string name="login_hint">Nom d\'utilisateur</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="login_button_text">Connexion</string>
+
+    <!-- MainActivity -->
+    <string name="main_menu_title">Menu</string>
+    <string name="main_menu_item_1">Jouer</string>
+    <string name="main_menu_item_2">Tuto</string>
+    <string name="main_menu_item_3">Pedago</string>
+    <string name="main_menu_item_4">Stats</string>
+
+    <!-- TutorialActivity -->
+    <string name="tutorial_text"><h1>Comment jouer ?</h1><p>Voici un cours tutoriel sur l\'utilisation de l\'application</p></string>
+    <string name="title_activity_login">Authentification</string>
+
+    <!-- fragment select category -->
+    <string name="select_category_title">Selectionnez une catégorie</string>
+    <string name="select_category_button_1_text">Catégorie 1</string>
+    <string name="select_category_button_2_text">Catégorie 2</string>
+    <string name="select_category_button_3_text">Catégorie 3</string>
+    <string name="select_category_button_4_text">Catégorie 4</string>
+    <string name="select_category_button_5_text">Catégorie 5</string>
+    <string name="select_category_button_6_text">Catégorie 6</string>
+
+    <!-- Select Level Fragment -->
+    <string name="select_level_title">Selectionnez un niveau</string>
+    <string name="select_level_button_1_text">Niveau 1</string>
+    <string name="select_level_button_2_text">Niveau 2</string>
+    <string name="select_level_button_3_text">Niveau 3</string>
+    <string name="select_level_button_4_text">Niveau 4</string>
+    <string name="select_level_button_5_text">Niveau 5</string>
+    <string name="select_level_button_6_text">Niveau 6</string>
+    <string name="select_level_button_7_text">Niveau 7</string>
+    <string name="select_level_button_text_gen">Niveau</string>
+
+    <!-- Play Field Fragment -->
+    <string name="play_field_default_title">Calcul n° X</string>
+    <string name="play_field_default_operation_label">XX + XX =</string>
+    <string name="play_field_default_user_response">YY,YY</string>
+    <string name="play_field_key_0">0</string>
+    <string name="play_field_key_1">1</string>
+    <string name="play_field_key_2">2</string>
+    <string name="play_field_key_3">3</string>
+    <string name="play_field_key_4">4</string>
+    <string name="play_field_key_5">5</string>
+    <string name="play_field_key_6">6</string>
+    <string name="play_field_key_7">7</string>
+    <string name="play_field_key_8">8</string>
+    <string name="play_field_key_9">9</string>
+    <string name="play_field_coma">,</string>
+    <string name="play_field_back_space">CE</string>
+    <string name="play_field_clear">C</string>
+    <string name="play_field_validation">OK</string>
+    <string name="play_field_minus">-</string>
+
+    <!-- Result Fragment -->
+    <string name="result_title">Résultat</string>
+    <string name="result_button_end">Fermer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_tutorial">TutorialActivity</string>
 </resources>
