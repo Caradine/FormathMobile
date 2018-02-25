@@ -10,4 +10,7 @@
     <color name="backgroung_blank">#ffffff</color>
     <color name="background_button">#cc66cc</color>
     <color name="text_color_button">#00ffff</color>
+
+    <color name="text_dark_backgound">#ffffff</color>
+    <color name="text_light_background">#000000</color>
 </resources>

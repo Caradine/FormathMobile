@@ -14,4 +14,8 @@
     <dimen name="select_category_padding_bottom">32dp</dimen>
     <dimen name="select_category_button_padding_left">5dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="select_category_title_size">30sp</dimen>
+
+    <!-- select level gragment -->
+    <dimen name="select_level_title_size">10sp</dimen>
 </resources>

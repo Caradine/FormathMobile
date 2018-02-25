@@ -17,8 +17,11 @@
             android:layout_weight="2"
             android:layout_width="match_parent"
             android:text="@string/select_category_title"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center"
+            android:textColor="@color/main_menu_item_text_color"
+            android:textSize="@dimen/select_category_title_size"
+            android:padding="10dp"
+            android:layout_margin="10dp"
             />
 
         <Button
@@ -30,6 +33,10 @@
             android:layout_width="match_parent"
             android:tag="1"
             android:text="@string/select_category_button_1_text"
+            android:background="@color/background_button"
+            android:textColor="@color/text_color_button"
+            android:padding="10dp"
+            android:layout_margin="10dp"
             />
 
         <Button
@@ -40,7 +47,11 @@
             android:layout_weight="1"
             android:tag="2"
             android:text="@string/select_category_button_2_text"
-            android:gravity="left|center_vertical" />
+            android:gravity="left|center_vertical"
+            android:background="@color/background_button"
+            android:textColor="@color/text_color_button"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
 
         <Button
             android:id="@+id/select_category_button_3"
@@ -50,7 +61,11 @@
             android:layout_weight="1"
             android:tag="3"
             android:text="@string/select_category_button_3_text"
-            android:gravity="left|center_vertical" />
+            android:gravity="left|center_vertical"
+            android:background="@color/background_button"
+            android:textColor="@color/text_color_button"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
 
         <Button
             android:id="@+id/select_category_button_4"
@@ -60,27 +75,11 @@
             android:layout_weight="1"
             android:tag="4"
             android:text="@string/select_category_button_4_text"
-            android:gravity="left|center_vertical" />
-
-        <Button
-            android:id="@+id/select_category_button_5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxHeight="30dp"
-            android:layout_weight="1"
-            android:tag="5"
-            android:text="@string/select_category_button_5_text"
-            android:gravity="left|center_vertical" />
-
-        <Button
-            android:id="@+id/select_category_button_6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxHeight="30dp"
-            android:layout_weight="1"
-            android:tag="6"
-            android:text="@string/select_category_button_6_text"
-            android:gravity="left|center_vertical" />
+            android:gravity="left|center_vertical"
+            android:background="@color/background_button"
+            android:textColor="@color/text_color_button"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
     </LinearLayout>
 
 </FrameLayout>

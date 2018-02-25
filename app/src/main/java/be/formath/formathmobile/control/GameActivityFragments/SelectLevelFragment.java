@@ -65,7 +65,8 @@ public class SelectLevelFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
         LinearLayout layout = new LinearLayout(getActivity());
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -73,25 +74,33 @@ public class SelectLevelFragment extends Fragment {
         layout.setWeightSum(nbElem + 2);
         layout.setGravity(Gravity.LEFT|Gravity.TOP);
 
-        TextView title = new TextView(getActivity());
+        TextView title = new TextView(getActivity().getApplicationContext());
         title.setId(Utils.generateViewId());
         //                                                 WIDTH                                HEIGHT                                Weight
         title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 2));
         title.setText(R.string.select_level_title);
+        title.setTextColor(getResources().getColor(R.color.main_menu_item_text_color));
+
         //title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         title.setGravity(Gravity.CENTER); // Pour text alignment
+        title.setTextSize(30);
         //title.setTextAppearance();
         layout.addView(title);
 
         for (int i = 0; i < nbElem; i++) {
             Button btn = new Button(getActivity());
             btn.setId(Utils.generateViewId());
-            btn.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+            params.setMargins(5, 5, 5, 5);
+            btn.setLayoutParams(params);
             btn.setMaxHeight(30);
             btn.setTag(Integer.toString(i + 1));
             //TODO: Get Strings from resource String
-            //btn.setText(R.string.select_level_button_text_gen + " " + (i + 1));
             btn.setText("Niveau " + (i + 1));
+            btn.setBackgroundColor(getResources().getColor(R.color.background_button));
+            btn.setTextColor(getResources().getColor(R.color.text_color_button));
+            btn.setPadding(10, 10, 10, 10);
+
             //TODO: Check for medal
             btn.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
             btn.setOnClickListener(new View.OnClickListener() {

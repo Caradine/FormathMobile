@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">FormathMobile</string>
-    <string name="title_activity_main_menu">What ?</string>
+    <string name="title_activity_main_menu">Bienvenu !</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -34,9 +34,7 @@
     <string name="select_category_button_1_text">Catégorie 1</string>
     <string name="select_category_button_2_text">Catégorie 2</string>
     <string name="select_category_button_3_text">Catégorie 3</string>
-    <string name="select_category_button_4_text">Catégorie 4</string>
-    <string name="select_category_button_5_text">Catégorie 5</string>
-    <string name="select_category_button_6_text">Catégorie 6</string>
+    <string name="select_category_button_4_text">Catégorie expert</string>
 
     <!-- Select Level Fragment -->
     <string name="select_level_title">Selectionnez un niveau</string>
@@ -52,7 +50,7 @@
     <!-- Play Field Fragment -->
     <string name="play_field_default_title">Calcul n° X</string>
     <string name="play_field_default_operation_label">XX + XX =</string>
-    <string name="play_field_default_user_response">YY,YY</string>
+    <string name="play_field_default_user_response">_</string>
     <string name="play_field_key_0">0</string>
     <string name="play_field_key_1">1</string>
     <string name="play_field_key_2">2</string>
@@ -63,11 +61,13 @@
     <string name="play_field_key_7">7</string>
     <string name="play_field_key_8">8</string>
     <string name="play_field_key_9">9</string>
+    <string name="play_field_key_pass">PASSER</string>
     <string name="play_field_coma">,</string>
     <string name="play_field_back_space">CE</string>
     <string name="play_field_clear">C</string>
     <string name="play_field_validation">OK</string>
     <string name="play_field_minus">-</string>
+    <string name="play_field_partial_title">Calcul n°</string>
 
     <!-- Result Fragment -->
     <string name="result_title">Résultat</string>

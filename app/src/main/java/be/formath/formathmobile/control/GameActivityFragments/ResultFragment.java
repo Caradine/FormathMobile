@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -78,36 +82,41 @@ public class ResultFragment extends Fragment {
             }
         });
 
-        LinearLayout ll = (LinearLayout)view.findViewById(R.id.result_list_container);
+        int note = 0;
+        LinearLayout ll = (LinearLayout)view.findViewById(R.id.result_list_answer);
+
         for (Operation oper : listOper) {
-            //TextView tv = new TextView(getContext());
-            //tv.setText(oper.getLabel() + " R:" + oper.getResponse() + " G:" + oper.getGivenResponse());
-            LinearLayout lh = new LinearLayout(getContext());
-            lh.setOrientation(LinearLayout.HORIZONTAL);
-            //TODO: utilisatino d'un tableau pour mettre en page les résultats
-            TextView t_oper = new TextView(getContext());
-            t_oper.setText(oper.getLabel());
-            t_oper.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 2));
-            TextView t_resp = new TextView(getContext());
-            t_resp.setText(oper.getResponse());
-            t_resp.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
-            TextView t_given = new TextView(getContext());
-            t_given.setText(oper.getGivenResponse());
-            t_given.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
-            //TODO: Ajout d'une petite icone selon que la réponse est bonne ou mauvaise
-            TextView t_icon = new TextView(getContext());
-            if (oper.isCorrect()) {
-                t_icon.setText("OK");
-            }
-            else {
-                t_icon.setText("ERREUR");
-            }
-            lh.addView(t_oper);
-            lh.addView(t_resp);
-            lh.addView(t_given);
-            lh.addView(t_icon);
-            ll.addView(lh);
+            TableLayout tl = new TableLayout(getActivity().getApplicationContext());
+
+            TableRow tr1 = new TableRow(getActivity().getApplicationContext());
+            TableRow tr2 = new TableRow(getActivity().getApplicationContext());
+
+            TextView tv_oper = new TextView(getActivity().getApplicationContext());
+            tv_oper.setText(oper.getLabel());
+            tv_oper.setTextColor(getResources().getColor(R.color.text_light_background));
+            tv_oper.setTextSize(20);
+            tr1.addView(tv_oper);
+
+            TextView tv_given = new TextView(getActivity().getApplicationContext());
+            tv_given.setText(oper.getGivenResponse());
+            tv_given.setTextColor(getResources().getColor(R.color.text_light_background));
+            tv_oper.setTextSize(15);
+            tr2.addView(tv_given);
+
+            TextView tv_answ = new TextView(getActivity().getApplicationContext());
+            tv_answ.setText(oper.getResponse());
+            tv_answ.setTextColor(getResources().getColor(R.color.text_light_background));
+            tv_oper.setTextSize(15);
+            tr2.addView(tv_answ);
+
+            tl.addView(tr1);
+            tl.addView(tr2);
+
+            ll.addView(tl);
         }
+
+        TextView t_note = (TextView)view.findViewById(R.id.result_note);
+        t_note.setText(note + " / 10");
         return view;
     }
 

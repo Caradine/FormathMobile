@@ -4,7 +4,6 @@ public class Operation {
     private String code;
     private String label;
     private String response;
-    private float rawResponse;
     private String givenResponse;
     private boolean result;
 
@@ -44,16 +43,4 @@ public class Operation {
         return givenResponse.equals(response);
     }
 
-    public float getRawResponse() {
-        return rawResponse;
-    }
-
-    public void setRawResponse(float rawResponse) {
-        this.rawResponse = rawResponse;
-        String value = String.valueOf(rawResponse);
-        if (value.endsWith(".0") || value.endsWith(",0")) {
-            value = value.substring(0, value.length() - 2);
-        }
-        this.setResponse(value);
-    }
 }

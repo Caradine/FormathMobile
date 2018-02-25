@@ -8,12 +8,14 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 
 import be.formath.formathmobile.control.GameActivityFragments.PlayFieldFragment;
 import be.formath.formathmobile.control.GameActivityFragments.ResultFragment;
 import be.formath.formathmobile.control.GameActivityFragments.SelectCategoryFragment;
 import be.formath.formathmobile.control.GameActivityFragments.SelectLevelFragment;
 import be.formath.formathmobile.data.DataWriter;
+import be.formath.formathmobile.generator.GeneratorUtilities;
 import be.formath.formathmobile.model.Game;
 import be.formath.formathmobile.model.GameType;
 import be.formath.formathmobile.model.Operation;
@@ -29,6 +31,8 @@ public class GameActivity extends Activity
 
     private Game dataGame;
     private int currentOperationIndex;
+
+    private static final String TAG = "Game Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,24 +61,23 @@ public class GameActivity extends Activity
     public void onFragmentSelectLevelInteraction (int category, int level) {
         if (level != 0) {
             dataGame.setGameStartDateTime(new GregorianCalendar());
-            //Generator gen = new Generator();
-            //ArrayList<Operation> listOper = gen.generateOperationList(category, level);
-            ArrayList<Operation> listOper = null;
+            ArrayList<Operation> listOper = GeneratorUtilities.generate_problem_list(category, level);
             dataGame.setListOperation(listOper);
             currentOperationIndex = 0;
             Operation oper = dataGame.getListOperation().get(currentOperationIndex);
-            PlayFieldFragment newFragment = PlayFieldFragment.newInstance(this, oper.getLabel(), currentOperationIndex + 1);
+            String title = "Catégorie " + category + ", Niveau " + level;
+            PlayFieldFragment newFragment = PlayFieldFragment.newInstance(oper.getLabel(), currentOperationIndex + 1, title);
             changeFragment(newFragment, true);
         }
     }
 
     @Override
-    public void onFragmentPlayFieldInteraction(String userResponse) {
+    public void onFragmentPlayFieldInteraction(String userResponse, String title) {
         dataGame.getListOperation().get(currentOperationIndex).setGivenResponse(userResponse);
         if (currentOperationIndex < 9) {
             currentOperationIndex++;
             Operation oper = dataGame.getListOperation().get(currentOperationIndex);
-            PlayFieldFragment newFragment = PlayFieldFragment.newInstance(this, oper.getLabel(), currentOperationIndex + 1);
+            PlayFieldFragment newFragment = PlayFieldFragment.newInstance(oper.getLabel(), currentOperationIndex + 1, title);
             changeFragment(newFragment, false);
         }
         else {
@@ -92,11 +95,12 @@ public class GameActivity extends Activity
 
     private void changeFragment(Fragment newFragment, boolean saveInBackstack) {
         String backStateName = ((Object) newFragment).getClass().getName();
-
+        Log.d(TAG, "Start change Fragment");
         try {
             FragmentManager manager = getFragmentManager();
             boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
-
+            Log.d(TAG, "fragmentPopped = " + fragmentPopped);
+            Log.d(TAG, "manager.findFragmentByTag(backStateName) = " + manager.findFragmentByTag(backStateName));
             if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) {
                 //fragment not in back stack, create it.
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -104,18 +108,23 @@ public class GameActivity extends Activity
                 transaction.replace(R.id.activity_game_container, newFragment, backStateName);
 
                 if (saveInBackstack) {
-                    //Log.d(TAG, "Change Fragment: addToBackTack " + backStateName);
+                    Log.d(TAG, "Change Fragment: addToBackTack " + backStateName);
                     transaction.addToBackStack(backStateName);
                 } else {
-                    //Log.d(TAG, "Change Fragment: NO addToBackTack");
+                    Log.d(TAG, "Change Fragment: NO addToBackTack");
                 }
 
                 transaction.commit();
             } else {
                 // custom effect if fragment is already instanciated
+                FragmentTransaction transaction = manager.beginTransaction();
+
+                transaction.replace(R.id.activity_game_container, newFragment, backStateName);
+
+                transaction.commit();
             }
         } catch (IllegalStateException exception) {
-            //Log.w(TAG, "Unable to commit fragment, could be activity as been killed in background. " + exception.toString());
+            Log.w(TAG, "Unable to commit fragment, could be activity as been killed in background. " + exception.toString());
         }
     }
 

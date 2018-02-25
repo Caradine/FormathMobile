@@ -49,7 +49,6 @@ public class DataWriter {
             valOper.put(FormathDBContract.TableOperation.COLUMN_NAME_CODE, oper.getCode());
             valOper.put(FormathDBContract.TableOperation.COLUMN_NAME_GIVEN_RESPONSE, oper.getGivenResponse());
             valOper.put(FormathDBContract.TableOperation.COLUMN_NAME_LABEL, oper.getLabel());
-            valOper.put(FormathDBContract.TableOperation.COLUMN_NAME_RAW_RESPONSE, oper.getRawResponse());
             valOper.put(FormathDBContract.TableOperation.COLUMN_NAME_RESPONSE, oper.getResponse());
             long id = database.insert(FormathDBContract.TableOperation.TABLE_NAME, null, valOper);
         }

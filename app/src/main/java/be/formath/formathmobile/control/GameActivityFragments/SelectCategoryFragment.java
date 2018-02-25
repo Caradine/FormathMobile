@@ -51,6 +51,48 @@ public class SelectCategoryFragment extends Fragment {
                 }
             }
         });
+        view.findViewById(R.id.select_category_button_2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("CLICK", "lancement onclick");
+                if (mListener != null) {
+                    try {
+                        mListener.onFragmentSelectCategoryInteraction(Integer.parseInt(view.getTag().toString()));
+                    }
+                    catch (Exception ex) {
+                        //TODO: Handle Exception
+                    }
+                }
+            }
+        });
+        view.findViewById(R.id.select_category_button_3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("CLICK", "lancement onclick");
+                if (mListener != null) {
+                    try {
+                        mListener.onFragmentSelectCategoryInteraction(Integer.parseInt(view.getTag().toString()));
+                    }
+                    catch (Exception ex) {
+                        //TODO: Handle Exception
+                    }
+                }
+            }
+        });
+        view.findViewById(R.id.select_category_button_4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("CLICK", "lancement onclick");
+                if (mListener != null) {
+                    try {
+                        mListener.onFragmentSelectCategoryInteraction(Integer.parseInt(view.getTag().toString()));
+                    }
+                    catch (Exception ex) {
+                        //TODO: Handle Exception
+                    }
+                }
+            }
+        });
         return view;
     }
 
