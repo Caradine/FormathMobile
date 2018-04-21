@@ -30,97 +30,127 @@ public class GameActivity extends Activity
         ResultFragment.OnFragmentResultInteractionListener{
 
     private Game dataGame;
-    private int currentOperationIndex;
-
-    private static final String TAG = "Game Activity";
+    private static final String TAG = GameActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*
+        When the Activity is created.
+         */
         super.onCreate(savedInstanceState);
         String user_login = getIntent().getExtras().getString("USER_OBJECT");
         dataGame = new Game();
-        //TODO: Récupération des infos utilisateur
+        //TODO: Getting user infos
         User user = new User();
         dataGame.setType(GameType.NORMAL);
         user.setUserName(user_login);
         dataGame.setUser(user);
         setContentView(R.layout.activity_game);
-        SelectCategoryFragment newFragment = SelectCategoryFragment.newInstance(this);
-        changeFragment(newFragment, true);
+        SelectCategoryFragment categoryFragment = SelectCategoryFragment.newInstance(this);
+        changeFragment(categoryFragment, true);
     }
 
     @Override
     public void onFragmentSelectCategoryInteraction(int category) throws Exception {
-        if (category != 0) {
+        /*
+        When the user select a category.
+         */
+        if (category == 10) {
+            backToMenu();
+        }
+        else if (category != 0) {
             SelectLevelFragment newFragment = SelectLevelFragment.newInstance(this, category);
             changeFragment(newFragment, true);
         }
     }
 
+    public void backToSelectedFragment(String fragmentName) {
+        Log.d("GameActivity", "back to selected fragment");
+        getFragmentManager().popBackStack(fragmentName, 0);
+        getFragmentManager().popBackStack("MainActivity", 0);
+    }
+
+    public void backToMenu() {
+        finish();
+    }
+
     @Override
     public void onFragmentSelectLevelInteraction (int category, int level) {
-        if (level != 0) {
+        /*
+        When the user select a level.
+        TODO: Adding back button to category selection
+         */
+        if (level == 10) {
+            Log.d("GameActivity", "Level Interaction level 10");
+            //backToSelectedFragment("be.formath.formathmobile.control.GameActivityFragments.SelectLevelFragment");
+            try {
+                changeFragment(SelectCategoryFragment.newInstance(this), false);
+            }
+            catch (Exception e) {
+                // TODO: DO smthg here
+                Log.d("GameActivity", "Exception in level 10");
+            }
+        }
+        else if (level != 0) {
             dataGame.setGameStartDateTime(new GregorianCalendar());
             ArrayList<Operation> listOper = GeneratorUtilities.generate_problem_list(category, level);
             dataGame.setListOperation(listOper);
-            currentOperationIndex = 0;
-            Operation oper = dataGame.getListOperation().get(currentOperationIndex);
+            dataGame.setCurrentOperationIndex(0);
+            Operation oper = dataGame.getListOperation().get(dataGame.getCurrentOperationIndex());
             String title = "Catégorie " + category + ", Niveau " + level;
-            PlayFieldFragment newFragment = PlayFieldFragment.newInstance(oper.getLabel(), currentOperationIndex + 1, title);
+            PlayFieldFragment newFragment = PlayFieldFragment.newInstance(oper.getLabel(), dataGame.getCurrentOperationIndex() + 1, title);
             changeFragment(newFragment, true);
         }
     }
 
     @Override
-    public void onFragmentPlayFieldInteraction(String userResponse, String title) {
-        dataGame.getListOperation().get(currentOperationIndex).setGivenResponse(userResponse);
-        if (currentOperationIndex < 9) {
-            currentOperationIndex++;
-            Operation oper = dataGame.getListOperation().get(currentOperationIndex);
-            PlayFieldFragment newFragment = PlayFieldFragment.newInstance(oper.getLabel(), currentOperationIndex + 1, title);
-            changeFragment(newFragment, false);
-        }
-        else {
-            // Enregistrement en DB de la partie
-            dataGame.generateResult();
-            DataWriter dr = DataWriter.getInstance(getBaseContext());
-            dr.saveGame(dataGame);
-            // Calcul du gain de médailles
+    public void onFragmentPlayFieldInteraction(String action, String userResponse, String title) {
+        if (action == "answer") {
+            if (userResponse != null && !userResponse.trim().equals("")) {
+                dataGame.setAnswerToCurrentOperation(userResponse);
+            }
+            Operation newOper = dataGame.goToNextUnansweredOperation();
+            if (newOper == null) {
+                // Enregistrement en DB de la partie
+                dataGame.generateResult();
+                DataWriter dr = DataWriter.getInstance(getBaseContext());
+                dr.saveGame(dataGame);
+                // Calcul du gain de médailles
 
-            // Lancement du fragment de fin de partie
-            ResultFragment newFragment = ResultFragment.newInstance(dataGame.getListOperation());
-            changeFragment(newFragment, false);
+                // Lancement du fragment de fin de partie
+                ResultFragment newFragment = ResultFragment.newInstance(dataGame.getListOperation());
+                changeFragment(newFragment, false);
+            } else {
+                PlayFieldFragment newFragment = PlayFieldFragment.newInstance(newOper.getLabel(), dataGame.getCurrentOperationIndex() + 1, title);
+                changeFragment(newFragment, false);
+            }
+        } else if (action == "pass") {
+            Operation newOper = dataGame.goToNextUnansweredOperation();
+            if (newOper != null) {
+                PlayFieldFragment newFragment = PlayFieldFragment.newInstance(newOper.getLabel(), dataGame.getCurrentOperationIndex() + 1, title);
+                changeFragment(newFragment, false);
+            }
         }
     }
 
     private void changeFragment(Fragment newFragment, boolean saveInBackstack) {
         String backStateName = ((Object) newFragment).getClass().getName();
-        Log.d(TAG, "Start change Fragment");
+        Log.d("changeFragment", "backStateName " + backStateName);
         try {
             FragmentManager manager = getFragmentManager();
             boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
-            Log.d(TAG, "fragmentPopped = " + fragmentPopped);
-            Log.d(TAG, "manager.findFragmentByTag(backStateName) = " + manager.findFragmentByTag(backStateName));
             if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) {
                 //fragment not in back stack, create it.
                 FragmentTransaction transaction = manager.beginTransaction();
-
                 transaction.replace(R.id.activity_game_container, newFragment, backStateName);
-
                 if (saveInBackstack) {
-                    Log.d(TAG, "Change Fragment: addToBackTack " + backStateName);
                     transaction.addToBackStack(backStateName);
-                } else {
-                    Log.d(TAG, "Change Fragment: NO addToBackTack");
                 }
-
                 transaction.commit();
             } else {
                 // custom effect if fragment is already instanciated
                 FragmentTransaction transaction = manager.beginTransaction();
-
                 transaction.replace(R.id.activity_game_container, newFragment, backStateName);
-
                 transaction.commit();
             }
         } catch (IllegalStateException exception) {
@@ -130,6 +160,7 @@ public class GameActivity extends Activity
 
     @Override
     public void onFragmentResultInteraction() {
+        Log.i(TAG, "Closing fragment");
         this.finish();
     }
 }

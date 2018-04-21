@@ -90,7 +90,13 @@ public class PlayFieldFragment extends Fragment {
                 /*if (Utils.isNumeric(response)) { // Ne marche pas a cause de la virgule !!!
                     mListener.onFragmentPlayFieldInteraction(response);
                 }*/
-                mListener.onFragmentPlayFieldInteraction(response, operationTitle);
+                mListener.onFragmentPlayFieldInteraction("answer", response, operationTitle);
+            }
+        });
+        view.findViewById(R.id.play_field_key_pass).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onFragmentPlayFieldInteraction("pass", null, operationTitle);
             }
         });
         view.findViewById(R.id.play_field_key_0).setOnClickListener(new View.OnClickListener() {
@@ -177,6 +183,7 @@ public class PlayFieldFragment extends Fragment {
                 onMinusPressed();
             }
         });
+
 
         return view;
     }
@@ -290,6 +297,6 @@ public class PlayFieldFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentPlayFieldInteractionListener {
-        void onFragmentPlayFieldInteraction(String userResponse, String title);
+        void onFragmentPlayFieldInteraction(String action, String userResponse, String title);
     }
 }

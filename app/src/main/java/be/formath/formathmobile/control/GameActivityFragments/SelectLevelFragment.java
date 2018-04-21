@@ -3,6 +3,7 @@ package be.formath.formathmobile.control.GameActivityFragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -112,6 +113,34 @@ public class SelectLevelFragment extends Fragment {
             });
             layout.addView(btn);
         }
+
+        // Add back to category button button
+
+        Button btn = new Button(getActivity());
+        btn.setId(Utils.generateViewId());
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        params.setMargins(5, 5, 5, 5);
+        btn.setLayoutParams(params);
+        btn.setMaxHeight(30);
+        btn.setTag(10);
+        //TODO: Get Strings from resource String
+        btn.setText("Retour aux catégories");
+        btn.setBackgroundColor(getResources().getColor(R.color.background_button));
+        btn.setTextColor(getResources().getColor(R.color.text_color_button));
+        btn.setPadding(10, 10, 10, 10);
+
+        //TODO: Check for medal
+        btn.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: Launch game here
+                Log.d("TEST", "Click back to category menu");
+                mListener.onFragmentSelectLevelInteraction(category, Integer.parseInt(v.getTag().toString()));
+            }
+        });
+        layout.addView(btn);
+
         return layout;
     }
 

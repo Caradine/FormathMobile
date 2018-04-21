@@ -71,6 +71,8 @@ public class ResultFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        if (mListener == null)
+            mListener = (OnFragmentResultInteractionListener) container.getContext();
         View view = inflater.inflate(R.layout.fragment_result, container, false);
         Button button = (Button)view.findViewById(R.id.result_button_end);
         button.setOnClickListener(new View.OnClickListener() {

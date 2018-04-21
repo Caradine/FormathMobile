@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -14,6 +15,7 @@ public class LoginActivity extends Activity {
 
     public final static String USER_LOGIN = "be.formath.formathmobile.user_login";
     private static LoginActivity instance;
+    private static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class LoginActivity extends Activity {
     }
 
     public void authenticate(View view) {
+        Log.d(TAG, "Authenticating");
         String login = ((EditText) findViewById(R.id.login_field_text)).getText().toString();
         if (check_password(login)) {
             Intent intent = new Intent(this, MainMenuActivity.class);

@@ -15,6 +15,7 @@
     <dimen name="select_category_button_padding_left">5dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="select_category_title_size">30sp</dimen>
+    <dimen name="select_category_half_button_width">1in</dimen>
 
     <!-- select level gragment -->
     <dimen name="select_level_title_size">10sp</dimen>

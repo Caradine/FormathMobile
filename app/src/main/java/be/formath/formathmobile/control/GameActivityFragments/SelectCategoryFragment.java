@@ -15,12 +15,18 @@ import be.formath.formathmobile.R;
 public class SelectCategoryFragment extends Fragment {
 
     private static OnFragmentSelectCategoryInteractionListener mListener;
+    private static final String TAG = SelectCategoryFragment.class.getSimpleName();
 
     public SelectCategoryFragment() {
         // Required empty public constructor
     }
 
     public static SelectCategoryFragment newInstance(GameActivity activity) {
+        /*
+        Creating new instance of SelectCategoryFragment.
+        TODO: Add parameters for challenge game (with time countdown).
+         */
+        Log.d(TAG, "call newInstance");
         SelectCategoryFragment fragment = new SelectCategoryFragment();
         // No parameters for this fragment, maybe in final version
         mListener = activity;
@@ -30,23 +36,24 @@ public class SelectCategoryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("CREATE", "Creation select_category_fragment");
+        Log.d(TAG, "call onCreate");
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "call onCreateView");
         View view = inflater.inflate(R.layout.fragment_select_category, container, false);
         view.findViewById(R.id.select_category_button_1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("CLICK", "lancement onclick");
+                Log.d(TAG, "call onClick");
                 if (mListener != null) {
                     try {
                         mListener.onFragmentSelectCategoryInteraction(Integer.parseInt(view.getTag().toString()));
                     }
                     catch (Exception ex) {
                         //TODO: Handle Exception
+                        Log.e(TAG, "Exception onFragmentSelectCategoryInteraction");
                     }
                 }
             }
@@ -93,8 +100,26 @@ public class SelectCategoryFragment extends Fragment {
                 }
             }
         });
+
+        view.findViewById(R.id.back_to_main_menu_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("CLICK", "Back To main menu");
+                if (mListener != null) {
+                    try {
+                        mListener.onFragmentSelectCategoryInteraction(Integer.parseInt(view.getTag().toString()));
+                    } catch (Exception ex) {
+                        //TODO: Handle exception
+                    }
+                }
+            }
+        });
+
         return view;
     }
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(View view) {

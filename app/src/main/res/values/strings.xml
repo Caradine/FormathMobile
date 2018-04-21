@@ -35,6 +35,7 @@
     <string name="select_category_button_2_text">Catégorie 2</string>
     <string name="select_category_button_3_text">Catégorie 3</string>
     <string name="select_category_button_4_text">Catégorie expert</string>
+    <string name="select_category_button_back_to_main_menu">Retour au menu</string>
 
     <!-- Select Level Fragment -->
     <string name="select_level_title">Selectionnez un niveau</string>

@@ -3,14 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="be.formath.formathmobile.control.GameActivity">
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="8"
         android:layout_gravity="start|top">
-
         <TextView
             android:id="@+id/select_category_title"
             android:layout_height="wrap_content"
@@ -23,7 +20,6 @@
             android:padding="10dp"
             android:layout_margin="10dp"
             />
-
         <Button
             android:gravity="start|center_vertical"
             android:id="@+id/select_category_button_1"
@@ -38,7 +34,6 @@
             android:padding="10dp"
             android:layout_margin="10dp"
             />
-
         <Button
             android:id="@+id/select_category_button_2"
             android:layout_width="match_parent"
@@ -52,7 +47,6 @@
             android:textColor="@color/text_color_button"
             android:padding="10dp"
             android:layout_margin="10dp"/>
-
         <Button
             android:id="@+id/select_category_button_3"
             android:layout_width="match_parent"
@@ -66,7 +60,6 @@
             android:textColor="@color/text_color_button"
             android:padding="10dp"
             android:layout_margin="10dp"/>
-
         <Button
             android:id="@+id/select_category_button_4"
             android:layout_width="match_parent"
@@ -75,11 +68,32 @@
             android:layout_weight="1"
             android:tag="4"
             android:text="@string/select_category_button_4_text"
-            android:gravity="left|center_vertical"
+            android:gravity="start|center_vertical"
             android:background="@color/background_button"
             android:textColor="@color/text_color_button"
             android:padding="10dp"
             android:layout_margin="10dp"/>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="13">
+            <Button
+                android:background="@color/background_button"
+                android:gravity="start|center_vertical"
+                android:id="@+id/back_to_main_menu_button"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:layout_width="0dp"
+                android:tag="10"
+                android:text="@string/select_category_button_back_to_main_menu"
+                android:textColor="@color/text_color_button" />
+            <Space
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_weight="7"/>
+        </LinearLayout>
     </LinearLayout>
-
 </FrameLayout>
